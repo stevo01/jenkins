@@ -1,0 +1,27 @@
+node {   
+    stage('cleanup workspace') {
+           sh '''#!/bin/bash
+           rm -fr *
+           '''
+    }
+    stage('get openwrt project files from github') {
+           sh '''#!/bin/bash
+           git clone https://github.com/openwrt/openwrt
+           cd openwrt
+           git checkout lede-17.01
+           '''
+    }
+    stage('get feeds') {
+           sh '''#!/bin/bash
+           cd openwrt
+           ./scripts/feeds update -a
+           ./scripts/feeds install -a
+           '''
+    }
+    stage('get config file') {
+           sh '''#!/bin/bash
+           cd openwrt
+           wget https://github.com/stevo01/jenkins/new/master/OpenWrt/.config
+           '''
+    }    
+ }
