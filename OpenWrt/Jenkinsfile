@@ -23,5 +23,11 @@ node {
            cd openwrt
            wget https://github.com/stevo01/jenkins/new/master/OpenWrt/.config
            '''
-    }    
+    }   
+    stage('make') {
+           sh '''#!/bin/bash
+           cd openwrt
+           make
+           '''
+    }
  }
