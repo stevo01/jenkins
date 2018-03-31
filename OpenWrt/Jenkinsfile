@@ -21,7 +21,7 @@ node {
     stage('get config file') {
            sh '''#!/bin/bash
            cd openwrt
-           wget https://github.com/stevo01/jenkins/new/master/OpenWrt/.config
+            wget https://raw.githubusercontent.com/stevo01/jenkins/master/OpenWrt/.config -O .config
            '''
     }   
     stage('make') {
