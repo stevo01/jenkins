@@ -1,0 +1,32 @@
+node{
+    stage('cleanup working dir')
+    {
+        sh '''#!/bin/bash
+        rm -fr *
+        '''
+    }
+
+    stage('get repos')
+    {
+        sh '''#!/bin/bash
+        mkdir fsl-community-bsp
+        cd fsl-community-bsp
+        repo init -u https://github.com/Freescale/fsl-community-bsp-platform -b jethro
+        repo sync
+        '''
+    }
+
+    stage('build core-image-minimal')
+    {
+        sh '''#!/bin/bash
+        cd fsl-community-bsp
+        EULA=1
+        MACHINE=imx6qsabresd 
+        source ./setup-environment build
+        ln -s /media/yoctoshare/downloads/ ./downloads
+        ln -s /media/yoctoshare/sstate-cache/ ./sstate-cache
+        bitbake core-image-minimal
+        '''
+    }
+    
+}
