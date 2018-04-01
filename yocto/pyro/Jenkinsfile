@@ -11,7 +11,7 @@ node {
     }
     stage('build') {
            sh '''#!/bin/bash
-           cd fsl-community-bsp
+           cd poky
            rm -fr build 
            source oe-init-build-env
            ln -s ~/.yoctoshare/downloads ./downloads
