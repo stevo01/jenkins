@@ -23,8 +23,8 @@ node{
         EULA=1
         MACHINE=imx6qsabresd 
         source ./setup-environment build
-        ln -s /media/yoctoshare/downloads/ ./downloads
-        ln -s /media/yoctoshare/sstate-cache/ ./sstate-cache
+        ln -s ~/.yoctoshare/downloads ./downloads
+        ln -s ~/.yoctoshare/sstate-cache ./sstate-cache
         bitbake core-image-minimal
         '''
     }
