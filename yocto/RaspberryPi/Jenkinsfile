@@ -1,4 +1,4 @@
-node {   
+node('lava'){   
     stage('cleanup workspace') {
            sh '''#!/bin/bash
            rm -fr *
